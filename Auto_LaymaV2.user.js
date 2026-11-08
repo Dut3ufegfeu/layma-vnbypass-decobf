@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.1.3
 // @description  Bản giải mã sạch hoàn nguyên 100% logic VNBypass v1.1.3 trên Layma.net - Tích hợp đầy đủ giao diện Cài đặt Bypass, Manual Quest, Fingerprint Spoofing & Tự động đổi nhiệm vụ
-// @author       DuckXkurumi / VNBypass (Deobfuscated by Community)
+// @author       Owner decobf: @tien_nood2 (<@1245646252905861190>) / DuckXkurumi
 // @icon         https://files.catbox.moe/8p9l8w.jpg
 // @match        https://layma.net/*
 // @match        https://*.layma.net/*

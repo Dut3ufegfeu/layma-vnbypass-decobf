@@ -1,5 +1,7 @@
 # Layma.net Bypass - Deobfuscated Source Code
 
+> **Owner decobf**: `@tien_nood2` (`<@1245646252905861190>`)
+
 Dự án phân tích, bẻ khóa và giải mã (deobfuscate) 100% logic của Userscript:
 **`VNBYPASS.COM - Layma.net Bypass CUTTAY PROMAX (decobf)`** (nguyên bản từ repo `duckpjvzexe/projectscript112247`).
 
