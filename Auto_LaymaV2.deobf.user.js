@@ -1,4 +1,4 @@
-// ==UserScript==
+﻿// ==UserScript==
 // @name         Layma.net & Trafficviet Bypass - Full Deobfuscated Source
 // @namespace    http://tampermonkey.net/
 // @version      1.1.3
@@ -41,7 +41,7 @@
             MANUAL_LINKS: 'vnbypass_manual_links',
             SETTINGS_COLLAPSED: 'vnbypass_settings_collapsed'
         },
-        COMMUNITY_DISCORD: 'https://discord.gg/4WNZx7DMQ4'
+        COMMUNITY_DISCORD: 'https://discord.gg/6tDVDHyyA'
     };
 
     // =========================================================================
@@ -252,3 +252,4 @@
 
     initTaskAutomation();
 })();
+

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * vnbypass_core_extracted.js
  * 
  * Trích xuất toàn bộ cấu hình, bộ lưu trữ localStorage, API endpoints
@@ -49,5 +49,6 @@ const SELECTORS = {
 const METADATA = {
     NAME: "VNBYPASS.COM",
     VERSION: "1.1.3",
-    COMMUNITY_DISCORD: "https://discord.gg/4WNZx7DMQ4"
+    COMMUNITY_DISCORD: "https://discord.gg/6tDVDHyyA"
 };
+
