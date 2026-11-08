@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Layma.net Bypass - CUTTAY PROMAX (decobf)
+// @name         VNBYPASS.COM - Layma.net Bypass CUTTAY PROMAX (decobf)
 // @namespace    http://tampermonkey.net/
 // @version      1.1.3
 // @description  Bản giải mã sạch hoàn nguyên 100% logic VNBypass v1.1.3 trên Layma.net - Tích hợp đầy đủ giao diện Cài đặt Bypass, Manual Quest, Fingerprint Spoofing & Tự động đổi nhiệm vụ
@@ -223,8 +223,8 @@
         const isCollapsed = Settings.isCollapsed;
         wrapper.innerHTML = `
             <div class="fancy-top-header" id="native-override-top-header">
-                <span class="vnbypass-title">VNBYPASS.COM - V1.1.3</span>
-                <a class="vnbypass-discord" href="${CONFIG.COMMUNITY_DISCORD}" target="_blank" rel="noopener noreferrer">Tham gia Discord</a>
+                <span class="vnbypass-title">VNBYPASS.COM - V1.1.3 (decobf)</span>
+                <a class="vnbypass-discord" href="https://discord.gg/6tDVDHyyA" target="_blank" rel="noopener noreferrer">Tham gia Discord (discord.gg/6tDVDHyyA)</a>
                 <div class="vnbypass-intro">Cộng Đồng Chia Sẻ Và Hỗ Trợ Nhanh, Tool Bypass Link VN Siêu Nhanh</div>
             </div>
 
