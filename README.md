@@ -1,47 +1,50 @@
-# Layma.net Bypass - Deobfuscated Source Code
+# Layma.net Bypass - Deobfuscated Source Code (v1.1.4)
 
-> **Owner decobf**: `@tien_nood2` (`<@1245646252905861190>`)
+> **Owner decobf**: `@tien_nood2` (`<@1245646252905861190>`)  
+> **Hỗ trợ decobf**: `@hlounhh` (`<@1312674288775593984>`)
 
-Dự án phân tích, bẻ khóa và giải mã (deobfuscate) 100% logic của Userscript:
-**`VNBYPASS.COM - Layma.net Bypass CUTTAY PROMAX (decobf)`** (nguyên bản từ repo `duckpjvzexe/projectscript112247`).
+Dự án phân tích, bẻ khóa và giải mã (deobfuscate) 100% logic của Userscript:  
+**`VNBYPASS.COM - Layma.net Bypass CUTTAY PROMAX (decobf)` phiên bản mới nhất v1.1.4** (nguyên bản từ `duckpjvzexe/projectscript112247`).
 
 ---
 
-## 🚀 Cài đặt trực tiếp (Userscript)
+## 🚀 Cài đặt trực tiếp (Userscript v1.1.4)
 
 Cài đặt bằng extension Tampermonkey / Violentmonkey trên trình duyệt:
 
-- 🔗 **Bản chuẩn (Đã cập nhật giao diện & link Discord mới)**:
+- 🔗 **Bản chuẩn v1.1.4 (Giao diện đầy đủ, Auto QCaptcha Solver & Discord link mới)**:  
   [Cài đặt Auto_LaymaV2.user.js](https://github.com/Dut3ufegfeu/layma-vnbypass-decobf/raw/main/Auto_LaymaV2.user.js)
-- 🔗 **Bản decobf**:
+- 🔗 **Bản decobf v1.1.4**:  
   [Cài đặt Auto_LaymaV2.decobf.user.js](https://github.com/Dut3ufegfeu/layma-vnbypass-decobf/raw/main/Auto_LaymaV2.decobf.user.js)
 
 ---
 
-## 🛠️ Các thay đổi quan trọng trong bản giải mã
+## 🛠️ Các tính năng cốt lõi trong bản giải mã v1.1.4
 
-1. **Đổi tên nhận diện**:
-   - Tên script: `VNBYPASS.COM - Layma.net Bypass CUTTAY PROMAX (decobf)`
-   - Tiêu đề bảng điều khiển: `VNBYPASS.COM - V1.1.3 (decobf)`
-2. **Cập nhật link Discord Server**:
-   - Link server Discord chính thức: **`https://discord.gg/6tDVDHyyA`**
-3. **Khôi phục 100% giao diện điều khiển (UI)**:
-   - Header Shimmer Gradient: `VNBYPASS.COM - V1.1.3 (decobf)` kèm liên kết Discord.
-   - Hộp **Cài đặt Bypass** (`#native-override-settings`): Nút ẩn/hiện cài đặt, 4 toggle switch (đổi NV khi lỗi, đổi blacklist, mở link tự động, lưu link thủ công), cấu hình thời gian chờ (`85s`).
-   - Hộp **Nhiệm vụ thủ công** (`#native-override-quest-form`): Hỗ trợ nhập link ảnh, từ khóa, link quest và các nút điều hướng.
-4. **Bypass Core & Bảo mật**:
-   - Giả lập thông số phần cứng `FingerprintData` (màn hình, pin, cảm biến) chống hệ thống Layma phát hiện bot.
-   - Trực tiếp tương tác với `/api/traffic/checkcode` mà không cần thông qua máy chủ trung gian `x10.mx` hay loader bên ngoài.
+1. **Khôi phục 100% mã nguồn sạch độc lập (2.300+ dòng)**:
+   - Loại bỏ hoàn toàn tầng mã hóa JSVMP và các loader trung gian (`duckxkrmproject.x10.mx`).
+   - Tích hợp trực tiếp logic giải mã QCaptcha từ nguồn: `installSolverFromSource`, `getSolveQCaptchaNative`, `solveCaptchaWithLibrary`.
+2. **Cấu hình & Đồng bộ máy chủ mới nhất**:
+   - Nạp trực tiếp các cấu hình nhiệm vụ từ Pastefy (`TKphHBjA`, `ZR3kGQZp`, `HRqUIVrI`).
+   - Cập nhật link máy chủ Discord chính thức: **`https://discord.gg/6tDVDHyyA`**.
+   - Tiêu đề giao diện cập nhật chuẩn: **`VNBYPASS.COM - V1.1.4 (decobf)`**.
+3. **Giao diện điều khiển chuyên nghiệp**:
+   - Header Shimmer Gradient: `VNBYPASS.COM - V1.1.4 (decobf)`.
+   - Bảng **Cài đặt Bypass** với 4 toggle switch (Đổi NV lỗi, Đổi NV blacklist, Mở link tự động, Lưu link thủ công), cấu hình thời gian chờ (`85s`).
+   - Modal xem link đã lưu, Modal danh sách đen Blacklist, Form nhập nhiệm vụ thủ công khi không bắt được ảnh/từ khóa.
+4. **Bypass Core & Tự động hóa**:
+   - Đồng bộ Visitor UUID & Session Token qua `/api/traffic/session` và `/api/visitor/register`.
+   - Bộ đếm ngược thời gian (`showCountdownBox`, `waitForCountdown`).
+   - Tự động bắt mã hoặc nộp mã qua script chèn DOM an toàn (`buildCheckCodeScript`, `submitCode`).
 
 ---
 
-## 📂 Danh sách tệp tin trong repository
+## 📂 Danh mục tệp tin trong repository
 
 | Tệp tin | Mô tả |
 | :--- | :--- |
-| `Auto_LaymaV2.user.js` | Userscript hoàn chỉnh trực tiếp cho Tampermonkey (đã cập nhật link Discord và tên decobf). |
-| `Auto_LaymaV2.decobf.user.js` | Phiên bản deobfuscate đầy đủ độc lập. |
-| `Auto_LaymaV2.full.deobf.user.js` | Phiên bản chi tiết giải mã đầy đủ UI và Fingerprint. |
+| `Auto_LaymaV2.user.js` | Userscript v1.1.4 chính thức cho Tampermonkey. |
+| `Auto_LaymaV2.decobf.user.js` | Phiên bản deobfuscate v1.1.4 độc lập. |
+| `Auto_LaymaV2.full.deobf.user.js` | Bản giải mã chi tiết đầy đủ 2.300+ dòng. |
 | `ObfFuncV2_deobfuscated.js` | Tầng 1 sau khi bẻ khóa chuỗi RC4 và loại bỏ debugger. |
 | `layma_stage2_deobfuscated.js` | Tầng 2 (tải từ host x10.mx) sau khi giải mã Bytecode VM. |
-| `vnbypass_core_extracted.js` | Logic cốt lõi bóc tách từ tầng JSVMP cuối cùng. |
