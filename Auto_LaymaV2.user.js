@@ -15,8 +15,8 @@
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @run-at       document-end
-// @updateURL    https://github.com/Dut3ufegfeu/layma-vnbypass-decobf/raw/main/Auto_LaymaV2.decobf.user.js
-// @downloadURL  https://github.com/Dut3ufegfeu/layma-vnbypass-decobf/raw/main/Auto_LaymaV2.decobf.user.js
+// @updateURL    https://github.com/Dut3ufegfeu/layma-vnbypass-decobf/raw/main/Auto_LaymaV2.user.js
+// @downloadURL  https://github.com/Dut3ufegfeu/layma-vnbypass-decobf/raw/main/Auto_LaymaV2.user.js
 // ==/UserScript==
 
 (function () {
