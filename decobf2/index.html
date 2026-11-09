@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decobf 2 — BBMKTS Bypass Pro 3D (mã nguồn đã giải mã)</title>
+<meta name="description" content="Phân tích & giải mã userscript BBMKTS Bypass Pro 3D — xem source, logic hoạt động.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<style>
+  :root{
+    --bg:#0b0e14; --bg2:#131822; --bg3:#1a212e; --border:#262d3b;
+    --fg:#e8eef7; --dim:#93a0b4; --acc:#5ea2ff; --acc2:#7c5cff; --ok:#41d07d; --mono:ui-monospace,'Cascadia Code','JetBrains Mono',Consolas,monospace;
+  }
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;background:radial-gradient(1200px 500px at 50% -100px,rgba(92,124,255,.14),transparent),var(--bg);color:var(--fg);font:16px/1.7 system-ui,'Segoe UI',Roboto,sans-serif}
+  a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 20px}
+  header{padding:52px 0 10px;text-align:center}
+  .logo{font-size:2rem;font-weight:800;letter-spacing:-.02em;background:linear-gradient(90deg,#7cc4ff,#a78bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--dim);max-width:660px;margin:8px auto 0;font-size:.95rem}
+  .hero-links{margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .hbtn{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:12px;font-weight:600;font-size:.9rem;border:1px solid var(--border);background:var(--bg2);color:var(--fg)}
+  .hbtn:hover{border-color:var(--acc);text-decoration:none}
+  .hbtn.discord{background:#5865F2;border-color:#5865F2;color:#fff}
+  .hbtn.discord:hover{filter:brightness(1.1)}
+  nav.toc{position:sticky;top:0;z-index:9;background:rgba(11,14,20,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);margin-top:26px}
+  nav.toc .wrap{display:flex;gap:2px;overflow-x:auto;padding:8px 20px;justify-content:center}
+  nav.toc a{white-space:nowrap;padding:6px 16px;border-radius:10px;font-size:.88rem;color:var(--dim)}
+  nav.toc a:hover{background:var(--bg3);color:var(--fg);text-decoration:none}
+  section{padding:40px 0 10px}
+  h2{font-size:1.3rem;margin:0 0 18px;display:flex;align-items:center;gap:12px}
+  h2 .n{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;border-radius:10px;width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;font-size:.95rem;flex:none}
+  .card{background:linear-gradient(180deg,var(--bg2),rgba(19,24,34,.6));border:1px solid var(--border);border-radius:16px;padding:20px 22px;margin:14px 0}
+  .chain{display:flex;flex-direction:column;font-family:var(--mono);font-size:.85rem}
+  .stage{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px 16px}
+  .stage b{color:var(--acc)}
+  ol.flow{margin:0;padding-left:0;list-style:none;counter-reset:st}
+  ol.flow li{counter-increment:st;position:relative;padding:10px 0 10px 52px;border-bottom:1px dashed var(--border)}
+  ol.flow li:last-child{border-bottom:none}
+  ol.flow li::before{content:counter(st);position:absolute;left:0;top:9px;width:34px;height:34px;border-radius:10px;background:var(--bg3);border:1px solid var(--border);color:var(--acc);font-family:var(--mono);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+  ol.flow li b{color:var(--fg)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+  code{font-family:var(--mono);background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:1px 7px;font-size:.84em;word-break:break-all;color:#a5c8ff}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-weight:700;border:none;border-radius:12px;padding:11px 20px;font-size:.92rem;cursor:pointer;box-shadow:0 8px 24px -10px rgba(94,162,255,.5)}
+  .btn:hover{filter:brightness(1.12);text-decoration:none}
+  .btn.ghost{background:var(--bg3);color:var(--fg);border:1px solid var(--border);box-shadow:none}
+  #files{display:grid;grid-template-columns:280px 1fr;gap:16px}
+  @media(max-width:860px){#files{grid-template-columns:1fr}}
+  .filegroup{margin-bottom:16px}
+  .filegroup h4{margin:0 0 7px;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--dim)}
+  .fbtn{display:flex;justify-content:space-between;gap:8px;width:100%;text-align:left;background:var(--bg2);color:var(--fg);border:1px solid var(--border);border-radius:10px;padding:9px 13px;margin-bottom:6px;font-size:.82rem;font-family:var(--mono);cursor:pointer}
+  .fbtn:hover{border-color:var(--acc)} .fbtn.active{border-color:var(--acc);background:rgba(94,162,255,.12)}
+  .fbtn .sz{color:var(--dim);flex:none}
+  #viewer{background:#080b11;border:1px solid var(--border);border-radius:16px;min-height:430px;display:flex;flex-direction:column;overflow:hidden}
+  #vbar{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border);background:var(--bg2);font-family:var(--mono);font-size:.82rem}
+  #vbar .path{color:var(--acc);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  #vbar button{background:var(--bg3);color:var(--fg);border:1px solid var(--border);border-radius:8px;padding:4px 12px;font-size:.78rem;cursor:pointer}
+  #vbody{flex:1;overflow:auto;margin:0}
+  #vbody pre{margin:0;padding:14px 0;font-family:var(--mono);font-size:.78rem;line-height:1.55;counter-reset:ln}
+  .ln{display:block;padding:0 18px 0 0;white-space:pre}
+  .ln::before{counter-increment:ln;content:counter(ln);display:inline-block;width:52px;margin-right:16px;text-align:right;color:#3d4657;user-select:none}
+  .placeholder{color:var(--dim);text-align:center;padding:80px 20px;font-family:var(--mono);font-size:.9rem}
+  details{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:12px 20px;margin:14px 0}
+  summary{cursor:pointer;font-weight:600;color:var(--acc);font-size:.92rem}
+  details[open]{padding-bottom:18px}
+  .note{border-left:3px solid var(--acc);background:rgba(94,162,255,.06);padding:10px 16px;border-radius:0 12px 12px 0;font-size:.9rem;margin:14px 0;color:var(--dim)}
+  footer{padding:44px 0 60px;text-align:center;color:var(--dim);font-size:.86rem}
+  footer .big{font-family:var(--mono);font-size:1.05rem;color:var(--fg);margin-bottom:8px}
+  #toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ok);color:#04110a;font-weight:700;border-radius:10px;padding:10px 20px;transition:.25s;opacity:0;z-index:99}
+  #toast.show{transform:translateX(-50%);opacity:1}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo">⚡ Decobf 2</div>
+    <div class="sub">Phân tích &amp; giải mã userscript <b>BBMKTS Bypass Pro 3D</b> v1.0.0 (tác giả gốc: <b>Tris</b>) — bypass shortlink <code>bbmkts.com/go/*</code> &amp; <code>/file/*</code> với UI 3D.</div>
+    <div class="hero-links">
+      <a class="hbtn discord" href="https://discord.gg/QDBgwZDF6C" target="_blank" rel="noopener">💬 Tham gia Discord</a>
+      <a class="hbtn" href="/" target="_blank" rel="noopener">← Decobf Hub (Layma / Traffic)</a>
+      <a class="hbtn" href="https://github.com/phanhieu18032011-rgb/userscript" target="_blank" rel="noopener">📦 Userscript gốc</a>
+    </div>
+  </div>
+</header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#bb-chain">Cấu trúc</a>
+  <a href="#bb-logic">Logic hoạt động</a>
+  <a href="#bb-install">Tải &amp; cài</a>
+  <a href="#bb-src">Source</a>
+</div></nav>
+
+<section id="bb-chain"><div class="wrap">
+  <h2><span class="n">1</span>Cấu trúc — 1 file duy nhất, không phụ thuộc ngoài</h2>
+  <div class="chain">
+    <div class="stage">📦 <b>bbmkts.user.js</b> — 113 KB — <b>gồm cả engine</b>, không @require, không tải stage ngoài</div>
+    <div class="arrow">▼ bên trong</div>
+    <div class="stage">🔐 JSVMP — logic biên dịch thành bytecode + interpreter (cùng họ VM với engine layma) — toàn bộ chuỗi/selectors nằm mã hóa trong bytecode</div>
+  </div>
+  <div class="note">Khác Layma/Traffic (nạp engine từ pastefy), script này <b>gọn và độc lập</b> — nhưng đổi lại cũng dùng VM bảo vệ mạnh nhất.</div>
+</div></section>
+
+<section id="bb-logic"><div class="wrap">
+  <h2><span class="n">2</span>Logic hoạt động — tự động vượt shortlink bbmkts.com</h2>
+  <div class="card">
+    <ol class="flow">
+      <li><b>Inject UI 3D nổi</b> — khung <code>#bv-floating-root</code> cố định góc màn hình với hiệu ứng nghiêng 3D (<code>#bv-stage-3d</code> + lớp chói <code>#bv-glare</code>, theo dõi <code>mousemove</code>/<code>mouseleave</code>), style chèn bằng <code>GM_addStyle</code>.</li>
+      <li><b>Tự động vượt link</b> — trên trang <code>bbmkts.com/go/*</code> hoặc <code>/file/*</code>: đếm ngược hiển thị <b>"Đang tự động vượt link BBMKTS (X giây)..."</b>, hết giờ tự bấm qua trang chặn.</li>
+      <li><b>Xoay nhiệm vụ</b> — nếu cần thêm lượt: <b>"Đang xoay nhiệm vụ Xs (lần 1/6 → 6/6)..."</b> — tự làm mới nhiệm vụ tối đa 6 lần, mỗi lần cách nhau ~300 ms.</li>
+      <li><b>Nhập bổ sung</b> — nhiệm vụ yêu cầu thì báo <b>"Lỗi: Nhiệm vụ hiện tại cần nhập Domain hoặc Mã Code vào ô bên dưới."</b> — ô nhập nằm ngay trong UI nổi.</li>
+      <li><b>Quảng chéo</b> — fetch <code>https://layma.net/</code> (liên kết tới script cùng hệ sinh thái).</li>
+    </ol>
+  </div>
+  <details>
+    <summary>🔧 Kỹ thuật mã hóa &amp; cách phân tích (chi tiết)</summary>
+    <p style="font-size:.9rem;color:var(--dim);margin-bottom:0">File 113 KB là một JSVMP: entry <code>(function vmJ3(…){…})(this)</code>, bytecode + interpreter, <b>0 chuỗi plain-text</b> (kể cả "startBtn" cũng nằm trong bảng chuỗi mã hóa). Phân tích bằng sandbox Node <code>vm</code> với DOM giả: điểm mấu chốt là <code>document.getElementById('bv-floating-root')</code> phải trả <b>null</b> như trang thật (lần đầu chưa có UI) thì script mới đi đúng nhánh tạo UI — từ đó trace được toàn bộ luồng: tạo UI → đếm ngược → xoay nhiệm vụ → báo lỗi nhập. Tools: <code>run_sandbox_hooked.js</code> (auto-click 19 handler).</p>
+  </details>
+</div></section>
+
+<section id="bb-install"><div class="wrap">
+  <h2><span class="n">3</span>Tải &amp; cài đặt</h2>
+  <div class="grid">
+    <div class="card">
+      <h3 style="margin-top:0">Bản gốc (GitHub — phanhieu18032011-rgb)</h3>
+      <p style="color:var(--dim);font-size:.88rem;margin-top:0">File duy nhất, cài trực tiếp vào Tampermonkey/Violentmonkey.</p>
+      <a class="btn" href="https://github.com/phanhieu18032011-rgb/userscript/raw/refs/heads/main/bbmkts.user.js">⬇ Cài bản gốc</a>
+      <button class="btn ghost" onclick="openFile('src/bbmkts.user.js')">Xem source gốc</button>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Source đã giải mã</h3>
+      <p style="color:var(--dim);font-size:.88rem;margin-top:0">Beautify + decode một phần (dot-notation, fold hằng). Logic sâu nằm trong bytecode VM.</p>
+      <button class="btn ghost" onclick="openFile('src/bbmkts.beautified.js')">Xem beautified</button>
+      <button class="btn ghost" onclick="openFile('src/bbmkts.deobfuscated.js')">Xem deobfuscated</button>
+    </div>
+  </div>
+</div></section>
+
+<section id="bb-src"><div class="wrap">
+  <h2><span class="n">4</span>Source</h2>
+  <div id="files"><div id="flist"></div>
+    <div id="viewer">
+      <div id="vbar"><span class="path">chọn file bên trái…</span></div>
+      <div id="vbody"><div class="placeholder">▲ Chọn file để xem</div></div>
+    </div>
+  </div>
+</div></section>
+
+<footer>
+  <div class="wrap">
+    <div class="big">🌐 decobf.tienxpro.site/decobf2</div>
+    <p><a class="hbtn discord" href="https://discord.gg/QDBgwZDF6C" target="_blank" rel="noopener">💬 discord.gg/QDBgwZDF6C</a></p>
+    <p>Hub chính: <a href="/">decobf.tienxpro.site</a> · Userscript gốc: <a href="https://github.com/phanhieu18032011-rgb/userscript">phanhieu18032011-rgb/userscript</a> (Tris)</p>
+    <p>Dành cho nghiên cứu &amp; minh bạch hóa những gì userscript làm trên máy bạn.</p>
+  </div>
+</footer>
+
+<div id="toast">Đã copy!</div>
+
+<script>
+const RAW = 'https://github.com/Dut3ufegfeu/layma-vnbypass-decobf/raw/main/decobf2/';
+const FILES = [
+  { g: 'Gốc', items: [
+    ['src/bbmkts.user.js', 'nguyên bản 113 KB'],
+  ]},
+  { g: 'Đã giải mã', items: [
+    ['src/bbmkts.beautified.js', 'beautified'],
+    ['src/bbmkts.deobfuscated.js', 'deobfuscated'],
+    ['src/sandbox_trace.log', 'trace sandbox'],
+  ]},
+];
+
+function fmtSize(b){ return b>1048576 ? (b/1048576).toFixed(1)+' MB' : b>1024 ? (b/1024).toFixed(1)+' KB' : b+' B'; }
+function buildList(){
+  const fl = document.getElementById('flist');
+  fl.innerHTML = '';
+  FILES.forEach(grp=>{
+    const d = document.createElement('div'); d.className='filegroup';
+    const h = document.createElement('h4'); h.textContent = grp.g; d.appendChild(h);
+    grp.items.forEach(([path,label])=>{
+      const b = document.createElement('button'); b.className='fbtn'; b.dataset.path=path;
+      b.innerHTML = '<span>'+path.split('/').pop()+(label?' <span style="color:var(--acc)">· '+label+'</span>':'')+'</span><span class="sz">…</span>';
+      b.onclick = ()=>openFile(path);
+      d.appendChild(b);
+      fetch(path, {method:'HEAD'}).then(r=>{ const n=r.headers.get('content-length'); if(n) b.querySelector('.sz').textContent=fmtSize(+n); }).catch(()=>{ b.querySelector('.sz').textContent=''; });
+    });
+    fl.appendChild(d);
+  });
+}
+function openFile(path){
+  document.querySelectorAll('#flist .fbtn').forEach(b=>b.classList.toggle('active', b.dataset.path===path));
+  document.getElementById('vbar').innerHTML = '<span class="path">'+path+'</span>' +
+    '<button onclick="copySrc()">Copy</button>' +
+    '<a href="'+RAW+path+'" target="_blank" rel="noopener"><button>Raw</button></a>';
+  const body = document.getElementById('vbody');
+  body.innerHTML = '<div class="placeholder">đang tải…</div>';
+  fetch(path).then(r=>{ if(!r.ok) throw new Error(r.status); return r.text(); }).then(text=>{
+    curText = text;
+    const lines = text.split('\n');
+    const useHl = lines.length <= 12000;
+    let content;
+    if(useHl){
+      const ext = /\.(txt|log)$/.test(path) ? 'plaintext' : 'javascript';
+      content = hljs.highlight(text, {language: ext, ignoreIllegals: true}).value;
+    } else {
+      content = text.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+    }
+    const wrapped = content.split('\n').map(l=>'<span class="ln">'+(l||' ')+'</span>').join('');
+    const big = useHl ? '' : '<div style="padding:8px 18px;color:var(--warn);font-size:.8rem;border-bottom:1px solid var(--border)">file lớn — không tô màu</div>';
+    body.innerHTML = '<pre>'+big+wrapped+'</pre>';
+  }).catch(e=>{
+    body.innerHTML = '<div class="placeholder">Không tải được file ('+e.message+')</div>';
+  });
+}
+let curText = null;
+function copySrc(){
+  if(!curText) return;
+  navigator.clipboard.writeText(curText).then(()=>{
+    const t=document.getElementById('toast'); t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),1500);
+  });
+}
+buildList();
+</script>
+</body>
+</html>

@@ -97,3 +97,10 @@ Website giờ có **switcher chọn 1 trong 2 script** (Layma / Traffic) để k
 | Engine | JSVMP bytecode (captcha qcaptcha) | VM-lite UI: nút nổi "Delta", nhập link nhiệm vụ → copy link đích → nhập mã |
 | Self-host | `Auto_LaymaV2.selfhost.user.js` (733 KB, 6 payload nhúng) | `TrafficViet.selfhost.user.js` (301 KB, engine nhúng) |
 | Artifacts | `analysis/` | `analysis-traffic/` |
+
+## 🧩 Thêm: BBMKTS Bypass Pro 3D v1.0.0 (tác giả Tris) — xem tại `/decobf2`
+
+- Single-file 113 KB JSVMP (cùng họ VM với engine layma), **không tải stage ngoài**.
+- Match `bbmkts.com/go/*` + `/file/*`; UI 3D nổi (`#bv-floating-root`, `#bv-stage-3d`, `#bv-glare`).
+- Logic: đếm ngược **"Đang tự động vượt link BBMKTS (X giây)..."** → tự qua trang chặn; **"Đang xoay nhiệm vụ (lần 1-6/6)"**; nhiệm vụ đặc biệt yêu cầu nhập Domain/Mã Code; quảng chéo layma.net.
+- Trang phân tích: **`/decobf2`** (nguồn: `decobf2/` — original + beautified + deobfuscated + sandbox trace).

@@ -1,0 +1,665 @@
+[*] top-level executed
+[*] auto-clicking 19 handlers
+=== after-clicks ===
+=== ACTIVITY LOG (first 400) ===
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+el.addEventListener :: Q | click
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+SET.el.innerHTML :: Dang tu dong vuot link BBMKTS (0 giay)...
+setTimeout :: [fn] | 300
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+SET.el.innerHTML :: Dang xoay nhiem vu 0s (lan 1/6)...
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+fetch :: https://layma.net/ | GET
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+SET.el.innerHTML :: Dang xoay nhiem vu 0s (lan 2/6)...
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+fetch :: https://layma.net/ | GET
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+SET.el.innerHTML :: Dang xoay nhiem vu 0s (lan 3/6)...
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+fetch :: https://layma.net/ | GET
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+SET.el.innerHTML :: Dang xoay nhiem vu 0s (lan 4/6)...
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+fetch :: https://layma.net/ | GET
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+SET.el.innerHTML :: Dang xoay nhiem vu 0s (lan 5/6)...
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+fetch :: https://layma.net/ | GET
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+SET.el.innerHTML :: Dang xoay nhiem vu 0s (lan 6/6)...
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+fetch :: https://layma.net/ | GET
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+SET.el.innerHTML :: <span style="color:#f87171;">Loi: Nhiem vu hien tai can nhap Domain hoac Ma Code vao o ben duoi.</span>
+AUTOCLICK :: 0 | Q
+AUTOCLICK :: 1 | Q
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+SET.el.innerHTML :: Dang xoay nhiem vu 0s (lan 1/6)...
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+fetch :: https://layma.net/ | GET
+AUTOCLICK :: 2 | Q
+AUTOCLICK :: 3 | Q
+AUTOCLICK :: 4 | Q
+AUTOCLICK :: 5 | Q
+AUTOCLICK :: 6 | Q
+AUTOCLICK :: 7 | Q
+AUTOCLICK :: 8 | Q
+AUTOCLICK :: 9 | Q
+AUTOCLICK :: 10 | Q
+AUTOCLICK :: 11 | Q
+AUTOCLICK :: 12 | Q
+AUTOCLICK :: 13 | Q
+AUTOCLICK :: 14 | Q
+AUTOCLICK :: 15 | Q
+AUTOCLICK :: 16 | Q
+AUTOCLICK :: 17 | Q
+AUTOCLICK :: 18 | Q
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+SET.el.innerHTML :: Dang xoay nhiem vu 0s (lan 2/6)...
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+fetch :: https://layma.net/ | GET
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+SET.el.innerHTML :: Dang xoay nhiem vu 0s (lan 3/6)...
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+fetch :: https://layma.net/ | GET
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+SET.el.innerHTML :: Dang xoay nhiem vu 0s (lan 4/6)...
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+fetch :: https://layma.net/ | GET
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+SET.el.innerHTML :: Dang xoay nhiem vu 0s (lan 5/6)...
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+fetch :: https://layma.net/ | GET
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+SET.el.innerHTML :: Dang xoay nhiem vu 0s (lan 6/6)...
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+fetch :: https://layma.net/ | GET
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+document.getElementById :: bv-floating-root
+GM_addStyle :: 
+            #bv-floating-root {
+                position: fixed;
+                bottom: 24px;
+    
+document.createElement :: div
+SET.el.innerHTML :: 
+            <div id="bv-stage-3d">
+                <div id="bv-glare"></div>
+                <div id="bv-floating-header">
+                
+el.addEventListener :: DIV | mousemove
+el.addEventListener :: DIV | mouseleave
+el.addEventListener :: Q | click
+el.addEventListener :: Q | mousedown
+window.addEventListener :: mousemove
+window.addEventListener :: mouseup
+SET.el.innerHTML :: <span style="color:#f87171;">Loi: Nhiem vu hien tai can nhap Domain hoac Ma Code vao o ben duoi.</span>
+=== total events: 388 timers queued: 1
