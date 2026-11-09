@@ -48,3 +48,25 @@ Cài đặt bằng extension Tampermonkey / Violentmonkey trên trình duyệt:
 | `Auto_LaymaV2.full.deobf.user.js` | Bản giải mã chi tiết đầy đủ 2.300+ dòng. |
 | `ObfFuncV2_deobfuscated.js` | Tầng 1 sau khi bẻ khóa chuỗi RC4 và loại bỏ debugger. |
 | `layma_stage2_deobfuscated.js` | Tầng 2 (tải từ host x10.mx) sau khi giải mã Bytecode VM. |
+
+---
+
+## 🔬 Phân tích sâu 2026-11-09 (sandbox + AST) — website công khai
+
+> 🌐 **Xem trực tuyến: [https://decobf.tienxpro.site](https://decobf.tienxpro.site)** — web viewer toàn bộ source, tải userscript, và bài viết chi tiết **logic mã hóa + cách decobf từng tầng**.
+
+Kết quả phân tích độc lập bằng sandbox (không thực thi logic trên máy thật):
+
+| Tầng | Nguồn | Bảo vệ | Trạng thái |
+|---|---|---|---|
+| 0 | `userscript.user.js` | — | nguyên bản 15 dòng header |
+| 1 | `duckxkurumi.xyz/…/funcion.js` (64 KB) | obfuscator.io: string-array Base64+RC4, 125 wrapper offset, xoay mảng checksum, self-defending, debug-protection, tắt console | **deobf 100%** → chỉ còn loader fetch+eval |
+| 2 | `duckxkrmproject.x10.mx/layma.js` (202 KB) | VM-lite: chuỗi TEA-16bit decrypt runtime, control-flow flatten, tên 2 ký tự | beautified + decode cục bộ |
+| 3 | `pastefy.app/5dKBHbgv/raw` (197 KB) | như tầng 2 | beautified + decode cục bộ |
+| 4 | `pastefy.app/6ZzLL87y/raw` (211 KB) | **JSVMP thật** — bytecode + interpreter, 0 chuỗi plain | beautified + **trace hành vi runtime** trong sandbox |
+
+Hành vi tầng 4 (trace sandbox, DOM giả, chặn `process`/`require`): đọc API nội bộ của layma.net (`getQCaptchaToken`, `getTokenId`, `getCampainId`, `getVisitorInfo`, `getVisitorUUID`, `trafficSessionToken`, `AUTO_CHANGE_MISSION_ON_ERROR`…), inject `#vnbypass-wrapper` / `#vnbypass-clean-style`, dò `#qcaptcha-checkcode` + `#native-override-captcha-box` + `#native-override-button-box` → tự động hóa nhiệm vụ lấy mã / captcha qcaptcha.
+
+📂 Thư mục mới:
+- `analysis/` — toàn bộ artifact: src gốc khôi phục, bản decode đầy đủ, các tầng beautified, chuỗi đã giải mã, log sandbox, kèm `originals/` (bản gốc để đối chiếu).
+- `tools/` — script deobfuscation dùng cho phân tích: `deob.js` (tầng 1), `deob2.js` (tầng 2/3), `run_sandbox.js` (tầng 4), `probe.js`.

@@ -1,0 +1,29 @@
+MISSING.window :: g
+MISSING.window :: deps
+MISSING.window :: getQCaptchaToken
+MISSING.window :: getTokenId
+MISSING.window :: getCampainId
+MISSING.window :: getVisitorInfo
+MISSING.window :: getVisitorUUID
+MISSING.window :: uuidv4
+MISSING.window :: trafficSessionToken
+MISSING.window :: res
+MISSING.window :: getReferrer
+MISSING.window :: g
+MISSING.window :: g
+MISSING.window :: deps
+MISSING.window :: deps
+MISSING.window :: deps
+MISSING.window :: AUTO_CHANGE_MISSION_ON_ERROR
+document.querySelector :: main#guide
+document.getElementById :: vnbypass-wrapper
+MISSING.el :: firstChild
+document.querySelector :: #qcaptcha-checkcode
+document.getElementById :: native-override-captcha-box
+document.getElementById :: native-override-button-box
+console.error :: VM-CALL-HEAL | object | undefined | 
+document.getElementById :: vnbypass-clean-style
+console.error :: VM-CALL-HEAL | object | undefined | 
+console.error :: VM-CALL-HEAL | object | undefined | 
+MISSING.window :: getVisitorInfo
+MISSING.window :: getVisitorInfo
