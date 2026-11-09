@@ -85,3 +85,15 @@ Hành vi tầng 4 (trace sandbox, DOM giả, chặn `process`/`require`): đọc
 3 lỗi đã gặp & cách xử lý khi build bản self-host (ghi lại để sau này tái sử dụng):
 1. `'use strict'` của wrapper kế thừa vào `eval` → payload cần sloppy mode → bỏ strict, dùng indirect eval `(0,eval)`.
 2. Node `vm.createContext(Proxy)` làm hỏng indirect eval trong sandbox kiểm thử (code eval không thấy props) → sandbox phải là plain object. *(Chỉ ảnh hưởng môi trường test, không ảnh hưởng Tampermonkey thật.)*
+
+## 🚦 Thêm: TrafficViet & TrafficHub Bypasser v1.0.0 (2026-11-09)
+
+Website giờ có **switcher chọn 1 trong 2 script** (Layma / Traffic) để không rối UI.
+
+| | Layma.net Bypass | TrafficViet & TrafficHub Bypasser |
+|---|---|---|
+| Match | `layma.net` | `app.trafficviet.vn`, `system.traffichub.vn` |
+| Chuỗi | 4 tầng (funcion → x10.mx → pastefy ×2) | **2 tầng** (funcion 228 KB → pastefy `sH0NUUgb` 297 KB) |
+| Engine | JSVMP bytecode (captcha qcaptcha) | VM-lite UI: nút nổi "Delta", nhập link nhiệm vụ → copy link đích → nhập mã |
+| Self-host | `Auto_LaymaV2.selfhost.user.js` (733 KB, 6 payload nhúng) | `TrafficViet.selfhost.user.js` (301 KB, engine nhúng) |
+| Artifacts | `analysis/` | `analysis-traffic/` |
