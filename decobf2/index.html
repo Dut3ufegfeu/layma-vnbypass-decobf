@@ -183,7 +183,7 @@ function buildList(){
       b.innerHTML = '<span>'+path.split('/').pop()+(label?' <span style="color:var(--acc)">· '+label+'</span>':'')+'</span><span class="sz">…</span>';
       b.onclick = ()=>openFile(path);
       d.appendChild(b);
-      fetch(path, {method:'HEAD'}).then(r=>{ const n=r.headers.get('content-length'); if(n) b.querySelector('.sz').textContent=fmtSize(+n); }).catch(()=>{ b.querySelector('.sz').textContent=''; });
+      fetch('/decobf2/' + path, {method:'HEAD'}).then(r=>{ const n=r.headers.get('content-length'); if(n) b.querySelector('.sz').textContent=fmtSize(+n); }).catch(()=>{ b.querySelector('.sz').textContent=''; });
     });
     fl.appendChild(d);
   });
@@ -195,7 +195,7 @@ function openFile(path){
     '<a href="'+RAW+path+'" target="_blank" rel="noopener"><button>Raw</button></a>';
   const body = document.getElementById('vbody');
   body.innerHTML = '<div class="placeholder">đang tải…</div>';
-  fetch(path).then(r=>{ if(!r.ok) throw new Error(r.status); return r.text(); }).then(text=>{
+  fetch('/decobf2/' + path).then(r=>{ if(!r.ok) throw new Error(r.status); return r.text(); }).then(text=>{
     curText = text;
     const lines = text.split('\n');
     const useHl = lines.length <= 12000;

@@ -81,7 +81,7 @@
 
   footer{padding:44px 0 60px;text-align:center;color:var(--dim);font-size:.86rem}
   footer .big{font-family:var(--mono);font-size:1.05rem;color:var(--fg);margin-bottom:8px}
-  #toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ok);color:#04110a;font-weight:700;border-radius:10px;padding:10px 20px;transition:.25s;opacity:0;z-index:99}
+  #toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ok);color:#04110a;font-weight:700;border-radius:10px;padding:10px 20px;transition:.25s;opacity:0;z-index:99;pointer-events:none}
   #toast.show{transform:translateX(-50%);opacity:1}
   .app{display:none} .app.on{display:block}
 </style>
@@ -99,7 +99,7 @@
     <div class="switcher">
       <button class="sw active" id="sw-layma" onclick="switchApp('layma')">🎯 Layma.net Bypass<small>v1.1.4 · layma.net</small></button>
       <button class="sw" id="sw-traffic" onclick="switchApp('traffic')">🚦 TrafficViet &amp; TrafficHub<small>v1.0.0 · trafficviet.vn / traffichub.vn</small></button>
-      <button class="sw" onclick="location.href='/decobf2'">🧩 BBMKTS Bypass 3D<small>v1.0.0 · bbmkts.com · mở /decobf2</small></button>
+      <button class="sw" onclick="location.href='/decobf2/'">🧩 BBMKTS Bypass 3D<small>v1.0.0 · bbmkts.com · mở /decobf2</small></button>
     </div>
   </div>
 </header>
