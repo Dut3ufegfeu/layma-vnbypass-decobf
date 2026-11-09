@@ -3,73 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Decobf Hub — Layma.net & TrafficViet/TrafficHub Bypass (mã nguồn đã giải mã)</title>
-<meta name="description" content="Phân tích & giải mã userscript Layma.net Bypass và TrafficViet/TrafficHub Bypasser: xem toàn bộ source, tải userscript self-host, hiểu logic mã hóa và cách deobfuscate.">
+<title>Decobf Hub — Layma.net & TrafficViet/TrafficHub (vnbypass decobf)</title>
+<meta name="description" content="Mã nguồn đã giải mã của Layma.net Bypass và TrafficViet/TrafficHub Bypasser — xem source, tải userscript self-host.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <style>
   :root{
-    --bg:#0d1117; --bg2:#161b22; --bg3:#1c2129; --border:#30363d;
-    --fg:#e6edf3; --dim:#8b949e; --acc:#58a6ff; --ok:#3fb950; --warn:#d29922; --bad:#f85149; --mono:ui-monospace,'Cascadia Code','JetBrains Mono',Consolas,monospace;
+    --bg:#0b0e14; --bg2:#131822; --bg3:#1a212e; --border:#262d3b;
+    --fg:#e8eef7; --dim:#93a0b4; --acc:#5ea2ff; --acc2:#7c5cff; --ok:#41d07d; --mono:ui-monospace,'Cascadia Code','JetBrains Mono',Consolas,monospace;
   }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 system-ui,'Segoe UI',Roboto,sans-serif}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;background:radial-gradient(1200px 500px at 50% -100px,rgba(92,124,255,.14),transparent),var(--bg);color:var(--fg);font:16px/1.7 system-ui,'Segoe UI',Roboto,sans-serif}
   a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-  header{background:linear-gradient(135deg,#0d1117 60%,#10254a);border-bottom:1px solid var(--border);padding:34px 0 22px}
-  h1{font-size:1.6rem;margin:0 0 6px}
-  h1 .tag{color:var(--acc)}
-  .sub{color:var(--dim);font-size:.95rem}
-  .banner{margin:16px 0 0;padding:9px 16px;border:1px dashed var(--acc);border-radius:10px;background:rgba(88,166,255,.08);font-family:var(--mono);font-size:.95rem;display:inline-block}
-  /* ===== app switcher ===== */
-  .switcher{display:flex;gap:10px;justify-content:center;margin:22px 0 0;flex-wrap:wrap}
-  .sw{cursor:pointer;border:1px solid var(--border);background:var(--bg2);color:var(--dim);border-radius:14px;padding:12px 26px;font-size:1rem;font-weight:600;transition:.15s;text-align:center}
-  .sw small{display:block;font-weight:400;font-size:.76rem;margin-top:2px}
-  .sw.active{background:rgba(88,166,255,.15);border-color:var(--acc);color:var(--fg)}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 20px}
+
+  header{padding:52px 0 10px;text-align:center}
+  .logo{font-size:2rem;font-weight:800;letter-spacing:-.02em;background:linear-gradient(90deg,#7cc4ff,#a78bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--dim);max-width:640px;margin:8px auto 0;font-size:.95rem}
+  .hero-links{margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .hbtn{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:12px;font-weight:600;font-size:.9rem;border:1px solid var(--border);background:var(--bg2);color:var(--fg)}
+  .hbtn:hover{border-color:var(--acc);text-decoration:none}
+  .hbtn.discord{background:#5865F2;border-color:#5865F2;color:#fff}
+  .hbtn.discord:hover{filter:brightness(1.1)}
+
+  .switcher{display:flex;gap:12px;justify-content:center;margin:34px 0 8px;flex-wrap:wrap}
+  .sw{cursor:pointer;border:1px solid var(--border);background:var(--bg2);color:var(--dim);border-radius:16px;padding:14px 30px;font-size:1.02rem;font-weight:700;transition:.15s;text-align:center}
+  .sw small{display:block;font-weight:400;font-size:.75rem;margin-top:3px;color:var(--dim)}
+  .sw.active{background:linear-gradient(135deg,rgba(94,162,255,.18),rgba(124,92,255,.18));border-color:var(--acc);color:var(--fg);box-shadow:0 0 0 1px rgba(94,162,255,.25),0 8px 30px -12px rgba(94,162,255,.35)}
   .sw:not(.active):hover{border-color:var(--dim)}
-  nav.toc{position:sticky;top:0;z-index:9;background:rgba(13,17,23,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
-  nav.toc .wrap{display:flex;gap:4px;overflow-x:auto;padding:8px 20px}
-  nav.toc a{white-space:nowrap;padding:5px 12px;border-radius:8px;font-size:.87rem;color:var(--dim)}
+
+  nav.toc{position:sticky;top:0;z-index:9;background:rgba(11,14,20,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);margin-top:26px}
+  nav.toc .wrap{display:flex;gap:2px;overflow-x:auto;padding:8px 20px;justify-content:center}
+  nav.toc a{white-space:nowrap;padding:6px 16px;border-radius:10px;font-size:.88rem;color:var(--dim)}
   nav.toc a:hover{background:var(--bg3);color:var(--fg);text-decoration:none}
-  section{padding:34px 0;border-bottom:1px solid var(--border)}
-  h2{font-size:1.25rem;margin:0 0 16px;display:flex;align-items:center;gap:10px}
-  h2 .n{background:var(--acc);color:#0d1117;border-radius:8px;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;font-size:.95rem;flex:none}
-  h3{font-size:1.02rem;margin:22px 0 8px;color:var(--acc)}
-  .card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin:12px 0}
-  .chain{display:flex;flex-direction:column;gap:0;font-family:var(--mono);font-size:.86rem}
-  .stage{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px 14px}
+
+  section{padding:40px 0 10px}
+  h2{font-size:1.3rem;margin:0 0 18px;display:flex;align-items:center;gap:12px}
+  h2 .n{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;border-radius:10px;width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;font-size:.95rem;flex:none}
+  .card{background:linear-gradient(180deg,var(--bg2),rgba(19,24,34,.6));border:1px solid var(--border);border-radius:16px;padding:20px 22px;margin:14px 0}
+  .chain{display:flex;flex-direction:column;font-family:var(--mono);font-size:.85rem}
+  .stage{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px 16px}
   .stage b{color:var(--acc)}
-  .arrow{color:var(--dim);text-align:center;padding:2px 0;font-size:.8rem}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
-  table{width:100%;border-collapse:collapse;font-size:.9rem}
-  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
-  th{color:var(--dim);font-weight:600}
-  code{font-family:var(--mono);background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:1px 6px;font-size:.85em;word-break:break-all}
-  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--acc);color:#0d1117;font-weight:600;border:none;border-radius:10px;padding:10px 18px;font-size:.92rem;cursor:pointer}
-  .btn:hover{filter:brightness(1.1);text-decoration:none}
-  .btn.ghost{background:var(--bg3);color:var(--fg);border:1px solid var(--border)}
-  .btn.ok{background:var(--ok)}
-  #files{display:grid;grid-template-columns:290px 1fr;gap:14px}
-  @media(max-width:860px){#files{grid-template-columns:1fr}}
-  .filegroup{margin-bottom:14px}
-  .filegroup h4{margin:0 0 6px;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--dim)}
-  .fbtn{display:flex;justify-content:space-between;gap:8px;width:100%;text-align:left;background:var(--bg2);color:var(--fg);border:1px solid var(--border);border-radius:9px;padding:8px 12px;margin-bottom:5px;font-size:.83rem;font-family:var(--mono);cursor:pointer}
-  .fbtn:hover{border-color:var(--acc)} .fbtn.active{border-color:var(--acc);background:rgba(88,166,255,.12)}
+  .arrow{color:var(--dim);text-align:center;padding:3px 0;font-size:.8rem}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+  ol.flow{margin:0;padding-left:0;list-style:none;counter-reset:st}
+  ol.flow li{counter-increment:st;position:relative;padding:10px 0 10px 52px;border-bottom:1px dashed var(--border)}
+  ol.flow li:last-child{border-bottom:none}
+  ol.flow li::before{content:counter(st);position:absolute;left:0;top:9px;width:34px;height:34px;border-radius:10px;background:var(--bg3);border:1px solid var(--border);color:var(--acc);font-family:var(--mono);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+  ol.flow li b{color:var(--fg)}
+  code{font-family:var(--mono);background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:1px 7px;font-size:.84em;word-break:break-all;color:#a5c8ff}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-weight:700;border:none;border-radius:12px;padding:11px 20px;font-size:.92rem;cursor:pointer;box-shadow:0 8px 24px -10px rgba(94,162,255,.5)}
+  .btn:hover{filter:brightness(1.12);text-decoration:none}
+  .btn.ghost{background:var(--bg3);color:var(--fg);border:1px solid var(--border);box-shadow:none}
+  .btn.ok{background:linear-gradient(135deg,#2fbf6f,#1ea85d)}
+
+  #files,#files-t{display:grid;grid-template-columns:280px 1fr;gap:16px}
+  @media(max-width:860px){#files,#files-t{grid-template-columns:1fr}}
+  .filegroup{margin-bottom:16px}
+  .filegroup h4{margin:0 0 7px;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--dim)}
+  .fbtn{display:flex;justify-content:space-between;gap:8px;width:100%;text-align:left;background:var(--bg2);color:var(--fg);border:1px solid var(--border);border-radius:10px;padding:9px 13px;margin-bottom:6px;font-size:.82rem;font-family:var(--mono);cursor:pointer}
+  .fbtn:hover{border-color:var(--acc)} .fbtn.active{border-color:var(--acc);background:rgba(94,162,255,.12)}
   .fbtn .sz{color:var(--dim);flex:none}
-  #viewer{background:#0a0d12;border:1px solid var(--border);border-radius:12px;min-height:420px;display:flex;flex-direction:column}
-  #vbar{display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid var(--border);background:var(--bg2);border-radius:12px 12px 0 0;font-family:var(--mono);font-size:.82rem}
-  #vbar .path{color:var(--acc);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  #vbar button{background:var(--bg3);color:var(--fg);border:1px solid var(--border);border-radius:7px;padding:4px 10px;font-size:.78rem;cursor:pointer}
-  #vbody{flex:1;overflow:auto;margin:0;border-radius:0 0 12px 12px}
-  #vbody pre{margin:0;padding:14px 0;font-family:var(--mono);font-size:.78rem;line-height:1.55;counter-reset:ln}
-  #vbody .ln{display:block;padding:0 18px 0 0;white-space:pre}
-  #vbody .ln::before{counter-increment:ln;content:counter(ln);display:inline-block;width:52px;margin-right:16px;text-align:right;color:#484f58;user-select:none}
-  .placeholder{color:var(--dim);text-align:center;padding:70px 20px;font-family:var(--mono);font-size:.9rem}
-  .note{border-left:3px solid var(--warn);background:rgba(210,153,34,.07);padding:10px 14px;border-radius:0 10px 10px 0;font-size:.9rem;margin:12px 0}
-  .note.blue{border-color:var(--acc);background:rgba(88,166,255,.07)}
-  .note.red{border-color:var(--bad);background:rgba(248,81,73,.07)}
-  footer{padding:30px 0 44px;color:var(--dim);font-size:.85rem}
-  footer .big{font-family:var(--mono);font-size:1rem;color:var(--fg)}
+  #viewer,#viewer-t{background:#080b11;border:1px solid var(--border);border-radius:16px;min-height:430px;display:flex;flex-direction:column;overflow:hidden}
+  #vbar,#vbar-t{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border);background:var(--bg2);font-family:var(--mono);font-size:.82rem}
+  #vbar .path,#vbar-t .path{color:var(--acc);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  #vbar button,#vbar-t button{background:var(--bg3);color:var(--fg);border:1px solid var(--border);border-radius:8px;padding:4px 12px;font-size:.78rem;cursor:pointer}
+  #vbody,#vbody-t{flex:1;overflow:auto;margin:0}
+  #vbody pre,#vbody-t pre{margin:0;padding:14px 0;font-family:var(--mono);font-size:.78rem;line-height:1.55;counter-reset:ln}
+  .ln{display:block;padding:0 18px 0 0;white-space:pre}
+  .ln::before{counter-increment:ln;content:counter(ln);display:inline-block;width:52px;margin-right:16px;text-align:right;color:#3d4657;user-select:none}
+  .placeholder{color:var(--dim);text-align:center;padding:80px 20px;font-family:var(--mono);font-size:.9rem}
+
+  details{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:12px 20px;margin:14px 0}
+  summary{cursor:pointer;font-weight:600;color:var(--acc);font-size:.92rem}
+  details[open]{padding-bottom:18px}
+  .note{border-left:3px solid var(--acc);background:rgba(94,162,255,.06);padding:10px 16px;border-radius:0 12px 12px 0;font-size:.9rem;margin:14px 0;color:var(--dim)}
+
+  footer{padding:44px 0 60px;text-align:center;color:var(--dim);font-size:.86rem}
+  footer .big{font-family:var(--mono);font-size:1.05rem;color:var(--fg);margin-bottom:8px}
   #toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ok);color:#04110a;font-weight:700;border-radius:10px;padding:10px 20px;transition:.25s;opacity:0;z-index:99}
   #toast.show{transform:translateX(-50%);opacity:1}
   .app{display:none} .app.on{display:block}
@@ -79,253 +90,218 @@
 
 <header>
   <div class="wrap">
-    <h1>Decobf Hub <span class="tag">· VNBypass CUTTAY PROMAX</span></h1>
-    <div class="sub">Phân tích &amp; giải mã userscript của <b>DuckXkurumi</b> — xem toàn bộ mã nguồn đã deobfuscate, cài bản self-host, đọc chi tiết logic mã hóa &amp; cách bẻ. <b>Chọn một script bên dưới</b> để xem.</div>
-    <div class="banner">🌐 <b>https://decobf.tienxpro.site</b> · GitHub: <a href="https://github.com/Dut3ufegfeu/layma-vnbypass-decobf" style="color:var(--fg)">Dut3ufegfeu/layma-vnbypass-decobf</a></div>
+    <div class="logo">⚡ Decobf Hub</div>
+    <div class="sub">Mã nguồn đã giải mã của userscript <b>VNBypass — CUTTAY PROMAX</b> (tác giả gốc: DuckXkurumi). Chọn một script để xem logic, source và bản cài đặt.</div>
+    <div class="hero-links">
+      <a class="hbtn discord" href="https://discord.gg/QDBgwZDF6C" target="_blank" rel="noopener">💬 Tham gia Discord</a>
+      <a class="hbtn" href="https://github.com/Dut3ufegfeu/layma-vnbypass-decobf" target="_blank" rel="noopener">📦 GitHub</a>
+    </div>
     <div class="switcher">
-      <button class="sw active" id="sw-layma" onclick="switchApp('layma')">🎯 Layma.net Bypass<small>CUTTAY PROMAX v1.1.4 · 4 tầng loader · layma.net</small></button>
-      <button class="sw" id="sw-traffic" onclick="switchApp('traffic')">🚦 TrafficViet &amp; TrafficHub<small>Bypasser v1.0.0 · 2 tầng · app.trafficviet.vn / system.traffichub.vn</small></button>
+      <button class="sw active" id="sw-layma" onclick="switchApp('layma')">🎯 Layma.net Bypass<small>v1.1.4 · layma.net</small></button>
+      <button class="sw" id="sw-traffic" onclick="switchApp('traffic')">🚦 TrafficViet &amp; TrafficHub<small>v1.0.0 · trafficviet.vn / traffichub.vn</small></button>
     </div>
   </div>
 </header>
 
-<!-- ================= APP: LAYMA ================= -->
+<!-- ================= LAYMA ================= -->
 <div class="app on" id="app-layma">
 
 <nav class="toc"><div class="wrap">
-  <a href="#lm-chain">Chuỗi loader</a>
-  <a href="#lm-behavior">Nó chạy gì?</a>
-  <a href="#lm-install">Cài đặt</a>
-  <a href="#lm-src">Xem source</a>
-  <a href="#lm-obf">Logic mã hóa</a>
-  <a href="#lm-method">Cách decobf</a>
+  <a href="#lm-chain">Chuỗi nạp</a>
+  <a href="#lm-logic">Logic hoạt động</a>
+  <a href="#lm-install">Tải &amp; cài</a>
+  <a href="#lm-src">Source</a>
 </div></nav>
 
 <section id="lm-chain"><div class="wrap">
-  <h2><span class="n">1</span>Chuỗi nạp mã 4 tầng — file bạn cài KHÔNG chứa logic</h2>
+  <h2><span class="n">1</span>Chuỗi nạp — 4 tầng, file cài chỉ là vỏ</h2>
   <div class="chain">
-    <div class="stage">📦 <b>[0] userscript.user.js</b> — 655 B — chỉ header, <code>@require funcion.js</code></div>
-    <div class="arrow">▼ @require (Tampermonkey tải)</div>
-    <div class="stage">📜 <b>[1] funcion.js</b> — duckxkurumi.xyz — 64 KB obfuscator.io → deobf <b>100%</b>: chỉ fetch + eval ↓</div>
-    <div class="arrow">▼ fetch + eval</div>
-    <div class="stage">📜 <b>[2] layma.js</b> — duckxkrmproject.x10.mx — 202 KB, chuỗi TEA-encrypt runtime → fetch + eval ↓</div>
-    <div class="arrow">▼ fetch + eval</div>
-    <div class="stage">📜 <b>[3] pastefy.app/5dKBHbgv/raw</b> — 197 KB — loader kế → fetch + eval ↓</div>
-    <div class="arrow">▼ fetch + eval</div>
-    <div class="stage">⚡ <b>[4] pastefy.app/6ZzLL87y/raw</b> — 211 KB — <b>JSVMP thật</b> (bytecode + interpreter): engine bypass nhiệm vụ / captcha</div>
+    <div class="stage">📦 <b>userscript.user.js</b> — 655 B — chỉ header</div>
+    <div class="arrow">▼ @require</div>
+    <div class="stage">📜 <b>funcion.js</b> — duckxkurumi.xyz — loader (fetch + eval)</div>
+    <div class="arrow">▼</div>
+    <div class="stage">📜 <b>duckxkrmproject.x10.mx/layma.js</b> — 202 KB — loader kế</div>
+    <div class="arrow">▼</div>
+    <div class="stage">📜 <b>pastefy.app/5dKBHbgv</b> — 197 KB — loader kế</div>
+    <div class="arrow">▼</div>
+    <div class="stage">⚡ <b>pastefy.app/6ZzLL87y</b> — 211 KB — <b>ENGINE</b> (mọi logic nằm đây)</div>
   </div>
-  <div class="note">URL pastefy <b>không nằm dưới dạng chữ trong file</b> — mã hóa TEA-16bit, chỉ decrypt lúc chạy; chỉ lộ khi chạy sandbox.</div>
+  <div class="note">URL pastefy được mã hóa trong file — chỉ lộ khi chạy sandbox. Tác giả sửa paste = đổi hành vi của toàn bộ người dùng, không cần phát hành lại.</div>
 </div></section>
 
-<section id="lm-behavior"><div class="wrap">
-  <h2><span class="n">2</span>Tầng cuối chạy những gì? (trace sandbox)</h2>
-  <div class="card"><ul style="margin:0;padding-left:20px">
-    <li>Đọc <b>API nội bộ của chính layma.net</b>: <code>getQCaptchaToken</code>, <code>getTokenId</code>, <code>getCampainId</code>, <code>getVisitorInfo</code>, <code>getVisitorUUID</code>, <code>trafficSessionToken</code>, <code>getReferrer</code>, <code>AUTO_CHANGE_MISSION_ON_ERROR</code>…</li>
-    <li>Inject <code>#vnbypass-wrapper</code>, <code>#vnbypass-clean-style</code>; dò <code>#qcaptcha-checkcode</code>, <code>#native-override-captcha-box</code>, <code>#native-override-button-box</code></li>
-    <li>Kết luận: <b>tự động hóa "nhiệm vụ lấy mã" mở khóa chương</b> — gọi lại API captcha của trang, tự điền/nộp mã, đồng bộ visitor/session.</li>
-  </ul></div>
-  <div class="note red"><b>Rủi ro:</b> script <code>eval</code> code từ server tác giả qua 4 tầng, <code>@connect *</code>, logic đổi bất kỳ lúc nào qua pastefy. Cài = chạy code người lạ tùy thời điểm. Trang này nhằm mục đích <b>minh bạch &amp; nghiên cứu</b>.</div>
+<section id="lm-logic"><div class="wrap">
+  <h2><span class="n">2</span>Logic hoạt động — bypass nhiệm vụ lấy mã layma.net</h2>
+  <div class="card">
+    <ol class="flow">
+      <li><b>Đồng bộ định danh</b> — gọi API nội bộ của chính trang: <code>getVisitorInfo</code>, <code>getVisitorUUID</code>, <code>trafficSessionToken</code> để có phiên làm việc hợp lệ.</li>
+      <li><b>Inject giao diện</b> — chèn khung điều khiển <code>#vnbypass-wrapper</code> + làm sạch style bằng <code>#vnbypass-clean-style</code>.</li>
+      <li><b>Nhận nhiệm vụ</b> — tải cấu hình nhiệm vụ (ảnh/keyword cần tìm) từ paste của tác giả.</li>
+      <li><b>Qua captcha tự động</b> — gọi thẳng <code>getQCaptchaToken</code>, <code>getTokenId</code>, <code>getCampainId</code> — chính là API captcha (qcaptcha) của trang — để <b>tự có token mà không cần giải captcha</b>.</li>
+      <li><b>Tự điền &amp; nộp mã</b> — điền <code>#qcaptcha-checkcode</code>, bấm qua <code>#native-override-captcha-box</code> / <code>#native-override-button-box</code>.</li>
+      <li><b>Tự xử lý lỗi</b> — nhiệm vụ hỏng thì <code>AUTO_CHANGE_MISSION_ON_ERROR</code> tự đổi nhiệm vụ khác.</li>
+      <li><b>Kết quả</b> — nhận mã mở khóa chương mà không phải làm thủ công.</li>
+    </ol>
+  </div>
+  <details>
+    <summary>🔧 Kỹ thuật mã hóa &amp; cách decobf (chi tiết kỹ thuật)</summary>
+    <p style="font-size:.9rem;color:var(--dim)">Tầng 1 dùng javascript-obfuscator: string-array Base64+RC4, 125 wrapper offset, xoay mảng checksum 308604, self-defending + debug-protection. Tầng 2–4 dùng VM-lite kiểu Jscrambler (chuỗi XOR tách mảnh, TEA-16bit decrypt runtime, control-flow flatten) và tầng cuối là JSVMP thật — logic biên dịch thành bytecode, không còn chuỗi plain-text.</p>
+    <p style="font-size:.9rem;color:var(--dim);margin-bottom:0">Cách bẻ: trích máy giải mã chạy trong sandbox → evaluate từng call site qua AST (Babel) → fold hằng số → beautify; tầng VM/JSVMP thì chạy trong hộp kín với DOM/fetch giả rồi ghi lại mọi hành vi. Toàn bộ công cụ nằm trong <code>tools/</code>.</p>
+  </details>
 </div></section>
 
 <section id="lm-install"><div class="wrap">
-  <h2><span class="n">3</span>Cài đặt / tải userscript</h2>
+  <h2><span class="n">3</span>Tải &amp; cài đặt</h2>
   <div class="grid">
     <div class="card">
-      <h3 style="margin-top:0">⭐ Bản SELF-HOST (không phụ thuộc tác giả)</h3>
-      <p style="color:var(--dim);font-size:.88rem">Nhúng sẵn 6 payload (stage 2→4 + 3 paste config). Request tới x10.mx/pastefy bị chặn → phục vụ từ bản nhúng. <b>Tác giả xóa link cũng không bay.</b> Đã verify chạy offline trong sandbox.</p>
-      <a class="btn ok" href="Auto_LaymaV2.selfhost.user.js">⬇ Cài bản self-host (733 KB)</a>
+      <h3 style="margin-top:0;color:var(--ok)">⭐ Bản Self-host</h3>
+      <p style="color:var(--dim);font-size:.88rem;margin-top:0">Engine + config nhúng sẵn trong file. Tác giả xóa link cũng <b>không bay</b>, đã test chạy offline.</p>
+      <a class="btn ok" href="Auto_LaymaV2.selfhost.user.js">⬇ Cài (733 KB)</a>
       <button class="btn ghost" onclick="openFile('Auto_LaymaV2.selfhost.user.js')">Xem source</button>
     </div>
     <div class="card">
-      <h3 style="margin-top:0">Bản decobf độc lập (repo)</h3>
-      <p style="color:var(--dim);font-size:.88rem">Engine dựng lại từ trước (2.300+ dòng), không nạp từ x10.mx / pastefy.</p>
-      <a class="btn ghost" href="Auto_LaymaV2.decobf.user.js">⬇ Cài bản decobf</a>
+      <h3 style="margin-top:0">Bản decobf độc lập</h3>
+      <p style="color:var(--dim);font-size:.88rem;margin-top:0">Engine dựng lại sạch (2.300+ dòng), không nạp từ xa.</p>
+      <a class="btn ghost" href="Auto_LaymaV2.decobf.user.js">⬇ Cài</a>
       <button class="btn ghost" onclick="openFile('Auto_LaymaV2.decobf.user.js')">Xem source</button>
     </div>
     <div class="card">
-      <h3 style="margin-top:0">Bản gốc (duckxkurumi.xyz)</h3>
-      <p style="color:var(--dim);font-size:.88rem">Loader 4 tầng nguyên bản — nội dung stage có thể thay đổi bất kỳ lúc nào.</p>
-      <a class="btn ghost" href="https://duckxkurumi.xyz/bypass/layma/userscript.user.js">⬇ Cài bản gốc</a>
-      <button class="btn ghost" onclick="openFile('analysis/originals/funcion.js')">Xem funcion.js gốc</button>
+      <h3 style="margin-top:0">Bản gốc</h3>
+      <p style="color:var(--dim);font-size:.88rem;margin-top:0">Từ duckxkurumi.xyz — nội dung có thể đổi bất kỳ lúc nào.</p>
+      <a class="btn ghost" href="https://duckxkurumi.xyz/bypass/layma/userscript.user.js">⬇ Cài</a>
     </div>
   </div>
 </div></section>
 
 <section id="lm-src"><div class="wrap">
-  <h2><span class="n">4</span>Xem toàn bộ source</h2>
+  <h2><span class="n">4</span>Source</h2>
   <div id="files"><div id="flist"></div>
     <div id="viewer">
-      <div id="vbar"><span class="path">chọn một file ở bên trái…</span></div>
-      <div id="vbody"><div class="placeholder">▲ Chọn file để xem nội dung</div></div>
+      <div id="vbar"><span class="path">chọn file bên trái…</span></div>
+      <div id="vbody"><div class="placeholder">▲ Chọn file để xem</div></div>
     </div>
   </div>
-  <div class="note blue"><b>Về "src sạch nhất có thể":</b> Tầng 1 (<code>funcion.js</code>) đã deobf <b>100%</b> — src gốc thật chỉ ~15 dòng (xem <code>2-funcion.RECONSTRUCTED.js</code>). Tầng 2–4: bản tốt nhất đạt được máy là <b>beautify + decode chuỗi + fold hằng số</b> — logic chính nằm trong bytecode JSVMP, khôi phục 100% về JS gốc đọc được cần tracer/decompiler riêng cho từng VM (đã map được hành vi thay vì code).</div>
 </div></section>
 
-<section id="lm-obf"><div class="wrap">
-  <h2><span class="n">5</span>Logic mã hóa của từng tầng</h2>
+</div>
 
-  <h3>Tầng 1 — funcion.js: javascript-obfuscator (obfuscator.io)</h3>
-  <div class="card"><ol style="font-size:.93rem">
-    <li><b>String array</b> — <code>_0x55cc()</code> trả mảng ~350 chuỗi Base64+RC4. Mọi chuỗi trong code đều thay bằng lời gọi hàm.</li>
-    <li><b>Decoder lõi</b> — <code>_0x3d1b(index, key)</code>: lấy phần tử → atob → RC4(key 4 ký tự). Có memoization.</li>
-    <li><b>125 wrapper offset</b> — <code>_0x25d53f(a,b,c,d,e){return _0x3d1b(c-0x2e1, b)}</code> — mỗi call site một bộ hex khác nhau.</li>
-    <li><b>IIFE xoay mảng</b> — xoay <code>push/shift</code> đến khi tổng <code>parseInt</code> khớp checksum <b>308604</b>.</li>
-    <li><b>Anti-tamper</b> — selfDefending (<code>indexOf('\n')</code> + regex thảm họa <code>(((.+)+)+)+$</code>), debugProtection (<code>setInterval</code> 4s + <code>while(true){}</code> + <code>debugger</code>), tắt console.</li>
-  </ol></div>
-
-  <h3>Tầng 2–4 — x10.mx + pastefy: VM-lite kiểu Jscrambler &amp; JSVMP</h3>
-  <div class="card"><ol style="font-size:.93rem">
-    <li><b>Tên biến 2 ký tự</b> (<code>uy, AI, wa…</code>) phá khả năng grep.</li>
-    <li><b>Chuỗi XOR "miếng"</b> — <code>uy(arr, 11)</code> dùng <code>fromCharCode</code> — nhưng chính chữ đó bị tách <code>"\x66rom"+"\x43\x68ar"+"C\x6f\x64\x65"</code>.</li>
-    <li><b>Chuỗi chính trong mảng Uint16 mã TEA-16bit</b>: <code>bG[Ex] ^= ((up^Ez)+qK) &amp; 65535</code> — decrypt lazy runtime → URL tĩnh không thấy.</li>
-    <li><b>Control-flow flatten</b> — <code>while (Mi !== 185297400) { if (Mi === 184570624) {…} }</code>, hằng số state là phép XOR.</li>
-    <li><b>JSVMP thật (tầng 4)</b> — logic biên dịch thành bytecode, interpreter <code>DataView</code>/<code>getInt8</code>; <b>0 chuỗi plain-text trong 211 KB</b>; opcode CALL ném <code>TypeError(Nx+' is not a function')</code> là "cửa" patch &amp; trace.</li>
-  </ol></div>
-</div></section>
-
-<section id="lm-method"><div class="wrap">
-  <h2><span class="n">6</span>Cách decobf từng tầng</h2>
-  <div class="card"><ol style="font-size:.93rem">
-    <li><b>Tách máy giải mã khỏi logic</b>: Babel AST → tìm string-array → closure ngược qua các wrapper (125 hàm).</li>
-    <li><b>Sandbox</b>: ném function declarations (trơ) + đúng 1 IIFE xoay mảng vào Node <code>vm</code> — logic chính không bao giờ chạy.</li>
-    <li><b>Evaluate từng call site</b>: <code>_0x…(0x…,'key',…)</code> thuần hằng → cắt chuỗi nguồn → chạy trong sandbox → thay StringLiteral. 505/505 lời gọi được giải.</li>
-    <li><b>Fold hằng số</b> đến hội tụ: gộp nối chuỗi, tính <code>-0xff3+0x1396+0xbfd</code>, <code>obj['push']</code>→<code>obj.push</code>, <code>!![]</code>→<code>true</code>.</li>
-    <li><b>Beautify + tái tạo src gốc</b> bằng tay → ~15 dòng thật.</li>
-    <li><b>Tầng VM/JSVMP</b>: decode XOR (unescape <code>\xNN</code> + xóa nháy/+ trước khi tìm <code>fromCharCode</code>), fold bit-hằng, normalize escape; URL thật chỉ lộ khi chạy sandbox stub DOM/fetch; stage 4 — patch <code>throw new TypeError(Nx+…)</code> thành heal để trace toàn bộ hành vi.</li>
-  </ol>
-  <p style="margin-bottom:0;font-size:.88rem;color:var(--dim)">Script dùng cho phân tích: <code>tools/</code> — <code>deob.js</code> (tầng 1), <code>deob2.js</code> (tầng 2/3), <code>run_sandbox.js</code> (tầng 4), <code>build_selfhost.js</code> (đóng gói self-host).</p></div>
-  <div class="note blue"><b>Tóm tắt một dòng:</b> obfuscate = dịch code sang "máy khác người đọc"; decobf = cho chính cái máy đó chạy trong hộp kín rồi nghe nó thì thầm.</div>
-</div></section>
-
-</div><!-- /app-layma -->
-
-<!-- ================= APP: TRAFFIC ================= -->
+<!-- ================= TRAFFIC ================= -->
 <div class="app" id="app-traffic">
 
 <nav class="toc"><div class="wrap">
-  <a href="#tv-chain">Chuỗi loader</a>
-  <a href="#tv-behavior">Nó chạy gì?</a>
-  <a href="#tv-install">Cài đặt</a>
-  <a href="#tv-src">Xem source</a>
-  <a href="#tv-obf">Logic mã hóa</a>
+  <a href="#tv-chain">Chuỗi nạp</a>
+  <a href="#tv-logic">Logic hoạt động</a>
+  <a href="#tv-install">Tải &amp; cài</a>
+  <a href="#tv-src">Source</a>
 </div></nav>
 
 <section id="tv-chain"><div class="wrap">
-  <h2><span class="n">1</span>Chuỗi nạp mã 2 tầng</h2>
+  <h2><span class="n">1</span>Chuỗi nạp — 2 tầng</h2>
   <div class="chain">
-    <div class="stage">📦 <b>[0] userscript.user.js</b> — 771 B — header, <code>@match app.trafficviet.vn + system.traffichub.vn</code>, <code>@require funcion.js</code>, grant <code>GM_cookie</code></div>
-    <div class="arrow">▼ @require (Tampermonkey tải)</div>
-    <div class="stage">📜 <b>[1] funcion.js</b> — duckxkurumi.xyz — 228 KB VM-lite (chuỗi TEA-encrypt runtime) — chỉ fetch + eval ↓</div>
-    <div class="arrow">▼ fetch + eval</div>
-    <div class="stage">⚡ <b>[2] pastefy.app/sH0NUUgb/raw</b> — 297 KB — <b>ENGINE</b> (UI + tự động hóa nhiệm vụ) — hết chuỗi</div>
+    <div class="stage">📦 <b>userscript.user.js</b> — 771 B — match <code>app.trafficviet.vn</code> + <code>system.traffichub.vn</code>, grant <code>GM_cookie</code></div>
+    <div class="arrow">▼ @require</div>
+    <div class="stage">📜 <b>funcion.js</b> — 228 KB — loader (fetch + eval)</div>
+    <div class="arrow">▼</div>
+    <div class="stage">⚡ <b>pastefy.app/sH0NUUgb</b> — 297 KB — <b>ENGINE</b> (UI + tự động hóa)</div>
   </div>
-  <div class="note">URL pastefy nằm trong chuỗi TEA-mã hóa — chỉ lộ khi chạy sandbox (đã bắt được: <code>fetch https://pastefy.app/sH0NUUgb/raw?t=…</code>).</div>
 </div></section>
 
-<section id="tv-behavior"><div class="wrap">
-  <h2><span class="n">2</span>Engine chạy những gì? (trace sandbox + auto-click UI)</h2>
-  <div class="card"><ul style="margin:0;padding-left:20px">
-    <li>Inject <b>nút nổi "Mở Vnbypass - CUTTAY PROMAX"</b> (logo <b>Delta</b>, icon <code>cdn.upanhlaylink.com/i/7LN0E0hl.ico</code>) + link quảng chéo <b>layma.net</b> (cùng tác giả).</li>
-    <li>Panel nhập <b>"link nhiệm vụ"</b> → resolve → toast <b>"Đã sao chép link đích vào clipboard!"</b> (dùng <code>navigator.clipboard.writeText</code>).</li>
-    <li>Ô nhập <b>"mã tìm được"</b> → tự động điền/nộp mã trên trang nhiệm vụ.</li>
-    <li>Lắng nghe <code>keydown</code>, <code>mousemove</code>, <code>mouseup</code>, <code>click</code>; chuỗi bước tự động qua <code>setTimeout</code> 200 ms.</li>
-    <li>Resolve link thật cần session/cookie của <code>app.trafficviet.vn</code> / <code>system.traffichub.vn</code> (grant <code>GM_cookie</code>) → sandbox chỉ thấy khung UI; luồng API thật chạy trên trang thật.</li>
-  </ul></div>
-  <div class="note red"><b>Rủi ro:</b> <code>@connect *</code>, engine tải từ pastefy (đổi được bất cứ lúc nào), grant <code>GM_cookie</code> — quyền đọc/ghi cookie của trang. Bản self-host dưới đây đóng băng engine ở thời điểm 2026-11-09.</div>
+<section id="tv-logic"><div class="wrap">
+  <h2><span class="n">2</span>Logic hoạt động — bypass nhiệm vụ traffic</h2>
+  <div class="card">
+    <ol class="flow">
+      <li><b>Inject nút nổi</b> — nút <b>"Delta — Mở Vnbypass CUTTAY PROMAX"</b> (icon <code>cdn.upanhlaylink.com/i/7LN0E0hl.ico</code>) hiện trên mọi trang nhiệm vụ, kèm link quảng chéo layma.net (cùng tác giả).</li>
+      <li><b>Dán link nhiệm vụ</b> — người dùng dán link nhiệm vụ rút gọn vào panel.</li>
+      <li><b>Resolve link</b> — script gọi API của trang (kèm session/cookie qua <code>GM_cookie</code>) để tách link đích thật.</li>
+      <li><b>Copy link đích</b> — toast <b>"Đã sao chép link đích vào clipboard!"</b> qua <code>navigator.clipboard.writeText</code> — bỏ qua bước đợi xem quảng cáo.</li>
+      <li><b>Nộp mã</b> — mở link đích, lấy "mã tìm được" rồi dán vào ô của script → tự điền/nộp trên trang nhiệm vụ.</li>
+      <li><b>Tự động hóa</b> — lắng nghe <code>keydown</code>/<code>mousemove</code>/<code>mouseup</code>, chuỗi bước tự động chạy bằng <code>setTimeout</code> 200 ms.</li>
+    </ol>
+  </div>
+  <details>
+    <summary>🔧 Kỹ thuật mã hóa &amp; cách decobf (chi tiết kỹ thuật)</summary>
+    <p style="font-size:.9rem;color:var(--dim)">Cùng họ VM-lite với layma: tên biến 2 ký tự, chuỗi XOR tách mảnh, chuỗi chính mã TEA-16bit chỉ decrypt lúc chạy (URL pastefy không có trong source tĩnh), control-flow flatten. Deobf bằng Babel AST (decode XOR → fold hằng → beautify) + sandbox DOM/fetch giả để bắt URL và auto-click 6 handler của UI.</p>
+  </details>
 </div></section>
 
 <section id="tv-install"><div class="wrap">
-  <h2><span class="n">3</span>Cài đặt / tải userscript</h2>
+  <h2><span class="n">3</span>Tải &amp; cài đặt</h2>
   <div class="grid">
     <div class="card">
-      <h3 style="margin-top:0">⭐ Bản SELF-HOST (không phụ thuộc tác giả)</h3>
-      <p style="color:var(--dim);font-size:.88rem">Engine 297 KB nhúng sẵn; request tới <code>pastefy.app/sH0NUUgb</code> bị chặn → phục vụ từ bản nhúng. Đã verify chạy offline trong sandbox (UI dựng thành công).</p>
-      <a class="btn ok" href="TrafficViet.selfhost.user.js">⬇ Cài bản self-host (301 KB)</a>
+      <h3 style="margin-top:0;color:var(--ok)">⭐ Bản Self-host</h3>
+      <p style="color:var(--dim);font-size:.88rem;margin-top:0">Engine 297 KB nhúng sẵn; request tới pastefy bị chặn → phục vụ từ bản nhúng. Tác giả xóa paste cũng không bay.</p>
+      <a class="btn ok" href="TrafficViet.selfhost.user.js">⬇ Cài (301 KB)</a>
       <button class="btn ghost" onclick="openFile('TrafficViet.selfhost.user.js')">Xem source</button>
     </div>
     <div class="card">
-      <h3 style="margin-top:0">Bản gốc (duckxkurumi.xyz)</h3>
-      <p style="color:var(--dim);font-size:.88rem">Chuỗi 2 tầng nguyên bản — engine có thể bị thay đổi bất kỳ lúc nào.</p>
-      <a class="btn ghost" href="https://duckxkurumi.xyz/bypass/trafficviet+traffichub/userscript.user.js">⬇ Cài bản gốc</a>
+      <h3 style="margin-top:0">Bản gốc</h3>
+      <p style="color:var(--dim);font-size:.88rem;margin-top:0">Từ duckxkurumi.xyz — engine có thể bị thay đổi bất kỳ lúc nào.</p>
+      <a class="btn ghost" href="https://duckxkurumi.xyz/bypass/trafficviet+traffichub/userscript.user.js">⬇ Cài</a>
       <button class="btn ghost" onclick="openFile('analysis-traffic/originals/funcion.js')">Xem funcion.js gốc</button>
     </div>
   </div>
 </div></section>
 
 <section id="tv-src"><div class="wrap">
-  <h2><span class="n">4</span>Xem toàn bộ source</h2>
-  <div id="files-t"><div id="flist"></div>
+  <h2><span class="n">4</span>Source</h2>
+  <div id="files-t"><div id="flist-t"></div>
     <div id="viewer-t">
-      <div id="vbar-t"><span class="path">chọn một file ở bên trái…</span></div>
-      <div id="vbody-t"><div class="placeholder">▲ Chọn file để xem nội dung</div></div>
+      <div id="vbar-t"><span class="path">chọn file bên trái…</span></div>
+      <div id="vbody-t"><div class="placeholder">▲ Chọn file để xem</div></div>
     </div>
   </div>
-  <div class="note blue"><b>Về "src sạch nhất có thể":</b> <code>funcion.js</code> (228 KB obfuscated) thực chất chỉ là loader fetch+eval — src gốc khôi phục tại <code>funcion.RECONSTRUCTED.js</code>. Engine 297 KB dùng cùng họ VM-lite → bản tốt nhất là beautify + decode chuỗi XOR + fold hằng (logic sâu nằm trong mảng TEA-Uint16, chỉ decrypt runtime).</div>
 </div></section>
 
-<section id="tv-obf"><div class="wrap">
-  <h2><span class="n">5</span>Logic mã hóa &amp; cách decobf</h2>
-  <div class="card"><ul style="font-size:.93rem;margin-bottom:0">
-    <li><b>Cùng họ VM-lite với tầng 2–3 của layma</b>: shim Tampermonkey + tên 2 ký tự + chuỗi XOR mảnh + chuỗi TEA-16bit decrypt runtime + control-flow flatten state machine (hằng XOR) + hash djb2.</li>
-    <li><b>Quy trình decobf</b> (giống layma): Babel AST — nhận diện decoder XOR (phải unescape <code>\xNN</code> + xóa nháy/+ trước khi tìm <code>fromCharCode</code>) → decode 105 chuỗi → fold 1.295 member-access → beautify.</li>
-    <li><b>Bắt URL bằng sandbox</b>: chạy với DOM/fetch giả → lần lượt các tầng <code>fetch</code> lộ URL pastefy; auto-click 6 handler của UI để quan sát luồng nhiệm vụ/clipboard.</li>
-    <li>Script: <code>tools/deob2.js</code>, <code>tools/run_sandbox.js</code>, <code>tools/build_selfhost_traffic.js</code>.</li>
-  </ul></div>
-</div></section>
+</div>
 
-</div><!-- /app-traffic -->
-
-<footer><div class="wrap">
-  <div class="big">🌐 https://decobf.tienxpro.site</div>
-  <p>Repo: <a href="https://github.com/Dut3ufegfeu/layma-vnbypass-decobf">github.com/Dut3ufegfeu/layma-vnbypass-decobf</a> · Userscript gốc: <a href="https://duckxkurumi.xyz">duckxkurumi.xyz</a> (DuckXkurumi)</p>
-  <p>Trang này phục vụ mục đích nghiên cứu bảo mật &amp; minh bạch hóa những gì userscript thực sự làm trên máy người dùng. Không khuyến khích lách hệ thống kiếm tiền của bên thứ ba.</p>
-</div></footer>
+<footer>
+  <div class="wrap">
+    <div class="big">🌐 decobf.tienxpro.site</div>
+    <p><a class="hbtn discord" href="https://discord.gg/QDBgwZDF6C" target="_blank" rel="noopener">💬 discord.gg/QDBgwZDF6C</a></p>
+    <p>Repo: <a href="https://github.com/Dut3ufegfeu/layma-vnbypass-decobf">layma-vnbypass-decobf</a> · <a href="https://github.com/Dut3ufegfeu/Userscript-TrafficViet-TrafficHub-V1.0.0-vnbypass-decobf">TrafficViet-TrafficHub decobf</a> · Userscript gốc: DuckXkurumi</p>
+    <p>Dành cho nghiên cứu &amp; minh bạch hóa những gì userscript làm trên máy bạn.</p>
+  </div>
+</footer>
 
 <div id="toast">Đã copy!</div>
 
 <script>
 const RAW = 'https://github.com/Dut3ufegfeu/layma-vnbypass-decobf/raw/main/';
-
 const APPS = {
   layma: {
     viewer: { list: 'flist', bar: 'vbar', body: 'vbody' },
     files: [
-      { g: 'Userscript gốc (duckxkurumi.xyz)', items: [
+      { g: 'Gốc', items: [
         ['analysis/originals/userscript.user.js'], ['analysis/originals/funcion.js'],
       ]},
-      { g: 'Tầng 1 — funcion.js (deobf 100%)', items: [
-        ['analysis/2-funcion.RECONSTRUCTED.js', 'src gốc khôi phục'],
-        ['analysis/2-funcion.deobfuscated.js', 'decode đầy đủ'],
-        ['analysis/decoded_strings.txt', '400 chuỗi giải mã'],
+      { g: 'Deobf', items: [
+        ['analysis/2-funcion.RECONSTRUCTED.js', 'src gốc ~15 dòng'],
+        ['analysis/2-funcion.deobfuscated.js', 'decode 100%'],
+        ['analysis/decoded_strings.txt', 'chuỗi giải mã'],
       ]},
-      { g: 'Tầng 2–4 (beautified / partial)', items: [
+      { g: 'Tầng 2–4', items: [
         ['analysis/3-stage2-layma.deobfuscated.js'], ['analysis/4-stage3.deobfuscated.js'], ['analysis/5-stage4.beautified.js', 'JSVMP'],
       ]},
-      { g: 'Bản decobf & self-host', items: [
-        ['Auto_LaymaV2.selfhost.user.js', 'offline-ready'], ['Auto_LaymaV2.decobf.user.js'], ['Auto_LaymaV2.full.deobf.user.js'], ['Auto_LaymaV2.user.js'],
+      { g: 'Bản cài', items: [
+        ['Auto_LaymaV2.selfhost.user.js', 'self-host'], ['Auto_LaymaV2.decobf.user.js', 'độc lập'], ['Auto_LaymaV2.user.js'],
       ]},
-      { g: 'Runtime trace & tools', items: [
-        ['analysis/sandbox_activity.log'], ['tools/deob.js'], ['tools/deob2.js'], ['tools/run_sandbox.js'], ['tools/probe.js'], ['tools/build_selfhost.js'],
+      { g: 'Tools', items: [
+        ['tools/deob.js'], ['tools/deob2.js'], ['tools/run_sandbox.js'], ['tools/build_selfhost.js'],
       ]},
     ],
   },
   traffic: {
     viewer: { list: 'flist-t', bar: 'vbar-t', body: 'vbody-t' },
     files: [
-      { g: 'Userscript gốc (duckxkurumi.xyz)', items: [
+      { g: 'Gốc', items: [
         ['analysis-traffic/originals/userscript.user.js'], ['analysis-traffic/originals/funcion.js'],
+        ['analysis-traffic/originals/stage2_pastefy.js', 'engine'],
       ]},
-      { g: 'Tầng 1 — funcion.js', items: [
-        ['analysis-traffic/funcion.RECONSTRUCTED.js', 'src gốc khôi phục'],
-        ['analysis-traffic/funcion.deobfuscated.js', 'decode VM-lite'],
+      { g: 'Deobf', items: [
+        ['analysis-traffic/funcion.RECONSTRUCTED.js', 'src gốc'],
+        ['analysis-traffic/funcion.deobfuscated.js'], ['analysis-traffic/stage2.deobfuscated.js'],
       ]},
-      { g: 'Tầng 2 — engine 297 KB', items: [
-        ['analysis-traffic/originals/stage2_pastefy.js', 'gốc pastefy'],
-        ['analysis-traffic/stage2.deobfuscated.js', 'decode'],
-      ]},
-      { g: 'Self-host', items: [
-        ['TrafficViet.selfhost.user.js', 'offline-ready'],
+      { g: 'Bản cài', items: [
+        ['TrafficViet.selfhost.user.js', 'self-host'],
       ]},
       { g: 'Tools', items: [
         ['tools/build_selfhost_traffic.js'], ['tools/run_sandbox_hooked.js'],
@@ -335,7 +311,7 @@ const APPS = {
 };
 
 let curApp = localStorage.getItem('decobf-app') || 'layma';
-let curPath = null, curText = null;
+let curText = null;
 
 function switchApp(app) {
   curApp = app;
@@ -367,7 +343,6 @@ function buildList(){
 }
 
 function openFile(path){
-  curPath = path;
   const cfg = APPS[curApp];
   document.querySelectorAll('#'+cfg.viewer.list+' .fbtn').forEach(b=>b.classList.toggle('active', b.dataset.path===path));
   document.getElementById(cfg.viewer.bar).innerHTML = '<span class="path">'+path+'</span>' +
@@ -379,17 +354,18 @@ function openFile(path){
     curText = text;
     const lines = text.split('\n');
     const useHl = lines.length <= 12000;
-    let html;
+    let content;
     if(useHl){
       const ext = /\.(txt|log)$/.test(path) ? 'plaintext' : 'javascript';
-      html = hljs.highlight(text, {language: ext, ignoreIllegals: true}).value;
+      content = hljs.highlight(text, {language: ext, ignoreIllegals: true}).value;
     } else {
-      html = lines.map(l=>'<span class="ln">'+(l?l.replace(/&/g,'&amp;').replace(/</g,'&lt;'):' ')+'</span>').join('');
-      html = '<div style="padding:8px 18px;color:var(--warn);font-size:.8rem;border-bottom:1px solid var(--border)">file lớn — hiển thị không tô màu</div>' + html;
+      content = text.replace(/&/g,'&amp;').replace(/</g,'&lt;');
     }
-    body.innerHTML = '<pre><code class="hljs">'+html+'</code></pre>';
+    const wrapped = content.split('\n').map(l=>'<span class="ln">'+(l||' ')+'</span>').join('');
+    const big = useHl ? '' : '<div style="padding:8px 18px;color:var(--warn);font-size:.8rem;border-bottom:1px solid var(--border)">file lớn — không tô màu</div>';
+    body.innerHTML = '<pre>'+big+wrapped+'</pre>';
   }).catch(e=>{
-    body.innerHTML = '<div class="placeholder">Không tải được file ('+e.message+'). Nếu đang mở bằng file://, hãy dùng bản đã deploy.</div>';
+    body.innerHTML = '<div class="placeholder">Không tải được file ('+e.message+')</div>';
   });
 }
 function copySrc(){
