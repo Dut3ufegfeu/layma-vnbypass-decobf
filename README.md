@@ -70,3 +70,18 @@ Hành vi tầng 4 (trace sandbox, DOM giả, chặn `process`/`require`): đọc
 📂 Thư mục mới:
 - `analysis/` — toàn bộ artifact: src gốc khôi phục, bản decode đầy đủ, các tầng beautified, chuỗi đã giải mã, log sandbox, kèm `originals/` (bản gốc để đối chiếu).
 - `tools/` — script deobfuscation dùng cho phân tích: `deob.js` (tầng 1), `deob2.js` (tầng 2/3), `run_sandbox.js` (tầng 4), `probe.js`.
+
+## 🧬 Bản SELF-HOST (2026-11-09) — tác giả xóa link cũng không bay
+
+`Auto_LaymaV2.selfhost.user.js` (733 KB) — sinh bởi `tools/build_selfhost.js`:
+
+- **Nhúng nguyên vẹn 6 payload** vào chính file userscript: stage 2 (`x10.mx/layma.js`), stage 3 (`pastefy 5dKBHbgv`), stage 4 (`pastefy 6ZzLL87y`) + 3 paste cấu hình (`TKphHBjA`, `ZR3kGQZp`, `HRqUIVrI`).
+- **Interceptor** đứng giữa `window.fetch` và `GM_xmlhttpRequest`: mọi request tới link của tác giả → trả về bản nhúng (không có mạng nào rời máy).
+- Chuỗi loader gốc vẫn chạy đúng logic (fetch → eval từng tầng), chỉ là "nguồn" đã đổi thành bản nhúng.
+- Bản mirror thường (không nhúng) nằm tại `mirror/` để đối chiếu / fallback.
+
+Đã verify trong sandbox: chuỗi stage2 → stage3 → stage4 chạy **hoàn toàn offline**, stage 4 thực thi thật (inject `#vnbypass-wrapper`, dò `#qcaptcha-checkcode`…) với **0 request ra ngoài**.
+
+3 lỗi đã gặp & cách xử lý khi build bản self-host (ghi lại để sau này tái sử dụng):
+1. `'use strict'` của wrapper kế thừa vào `eval` → payload cần sloppy mode → bỏ strict, dùng indirect eval `(0,eval)`.
+2. Node `vm.createContext(Proxy)` làm hỏng indirect eval trong sandbox kiểm thử (code eval không thấy props) → sandbox phải là plain object. *(Chỉ ảnh hưởng môi trường test, không ảnh hưởng Tampermonkey thật.)*

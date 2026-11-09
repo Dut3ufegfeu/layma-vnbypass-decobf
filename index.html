@@ -141,16 +141,22 @@
   <h2><span class="n">3</span>Cài đặt / tải userscript</h2>
   <div class="grid">
     <div class="card">
-      <h3 style="margin-top:0">Bản gốc (duckxkurumi.xyz)</h3>
-      <p style="color:var(--dim);font-size:.88rem">Loader 4 tầng nguyên bản từ tác giả — nội dung stage có thể thay đổi bất kỳ lúc nào.</p>
-      <a class="btn" href="https://duckxkurumi.xyz/bypass/layma/userscript.user.js">⬇ Cài bản gốc</a>
-      <button class="btn ghost" onclick="openFile('analysis/originals/funcion.js')">Xem funcion.js gốc</button>
+      <h3 style="margin-top:0">⭐ Bản SELF-HOST (không phụ thuộc tác giả)</h3>
+      <p style="color:var(--dim);font-size:.88rem">Toàn bộ payload (stage 2→4 + 3 paste config) đã được <b>nhúng sẵn vào file</b>. Mọi request tới x10.mx/pastefy đều bị chặn và phục vụ từ bản nhúng → <b>tác giả xóa link cũng không ảnh hưởng</b>, không cần mạng ngoài.</p>
+      <a class="btn ok" href="Auto_LaymaV2.selfhost.user.js">⬇ Cài bản self-host (733 KB)</a>
+      <button class="btn ghost" onclick="openFile('Auto_LaymaV2.selfhost.user.js')">Xem source</button>
     </div>
     <div class="card">
-      <h3 style="margin-top:0">Bản decobf trong repo</h3>
-      <p style="color:var(--dim);font-size:.88rem">Engine độc lập đã giải mã, không nạp từ x10.mx / pastefy.</p>
-      <a class="btn ok" href="Auto_LaymaV2.decobf.user.js">⬇ Cài bản decobf</a>
+      <h3 style="margin-top:0">Bản decobf độc lập (repo)</h3>
+      <p style="color:var(--dim);font-size:.88rem">Engine đã giải mã dựng lại từ trước (2.300+ dòng), không nạp từ x10.mx / pastefy.</p>
+      <a class="btn ghost" href="Auto_LaymaV2.decobf.user.js">⬇ Cài bản decobf</a>
       <button class="btn ghost" onclick="openFile('Auto_LaymaV2.decobf.user.js')">Xem source</button>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Bản gốc (duckxkurumi.xyz)</h3>
+      <p style="color:var(--dim);font-size:.88rem">Loader 4 tầng nguyên bản từ tác giả — nội dung stage có thể thay đổi bất kỳ lúc nào.</p>
+      <a class="btn ghost" href="https://duckxkurumi.xyz/bypass/layma/userscript.user.js">⬇ Cài bản gốc</a>
+      <button class="btn ghost" onclick="openFile('analysis/originals/funcion.js')">Xem funcion.js gốc</button>
     </div>
   </div>
 </div></section>
@@ -268,6 +274,15 @@ const FILES = [
     ['Auto_LaymaV2.decobf.user.js', null],
     ['Auto_LaymaV2.full.deobf.user.js', null],
     ['Auto_LaymaV2.user.js', null],
+  ]},
+  { g: 'Self-host (payload nhúng)', items: [
+    ['Auto_LaymaV2.selfhost.user.js', 'offline-ready'],
+    ['mirror/stage2_layma.js', null],
+    ['mirror/stage3_pastefy.js', null],
+    ['mirror/stage4_pastefy.js', null],
+    ['mirror/cfg_TKphHBjA.json', null],
+    ['mirror/cfg_ZR3kGQZp.json', null],
+    ['mirror/cfg_HRqUIVrI.js', null],
   ]},
   { g: 'Runtime trace & tools', items: [
     ['analysis/sandbox_activity.log', null],
